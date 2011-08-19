@@ -78,7 +78,7 @@ class Autotest
 
   HOOKS = Hash.new { |h,k| h[k] = [] } #unfound keys are []
   unless defined? WINDOZE then
-    WINDOZE = /mswin|mingw|windows/ =~ Config::CONFIG['host_os']
+    WINDOZE = /mswin|mingw|windows/ =~ RbConfig::CONFIG['host_os']
     SEP = WINDOZE ? '&' : ';'
   end
 
@@ -636,8 +636,8 @@ class Autotest
 
   def ruby
     ruby = ENV['RUBY']
-    ruby ||= File.join(Config::CONFIG['bindir'],
-                       Config::CONFIG['ruby_install_name'])
+    ruby ||= File.join(RbConfig::CONFIG['bindir'],
+                       RbConfig::CONFIG['ruby_install_name'])
 
     ruby.gsub! File::SEPARATOR, File::ALT_SEPARATOR if File::ALT_SEPARATOR
 
