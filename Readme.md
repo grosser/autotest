@@ -1,4 +1,4 @@
-Standalone autotest extracted from ZenTest.  
+Standalone autotest extracted from ZenTest.
 
 As soon as you save a file, autotest will run the matching tests.
 
@@ -61,6 +61,7 @@ License
 =======
 
 ### Autotest was extracted from ZenTest and improved by:
+ - [brian p o'rourke](https://github.com/bpo)
  - [Charles Roper](http://twitter.com/charlesroper)
  - [Shane Liebling](http://github.com/shanel)
  - [Erik Fonselius](https://github.com/Fonsan)
