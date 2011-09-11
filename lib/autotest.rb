@@ -499,6 +499,8 @@ class Autotest
   # modified.
   def find_files_to_test(files=find_files)
     updated = files.select { |filename, mtime| self.last_mtime < mtime }
+    # ensure we're dealing with a nested array in Ruby 1.9
+    updated = updated.to_a
 
     # nothing to update or initially run
     unless updated.empty? || self.last_mtime.to_i == 0 then
