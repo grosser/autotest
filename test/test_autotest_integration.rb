@@ -59,7 +59,7 @@ class TestAutotestIntegration < Test::Unit::TestCase
 
       should 'show test summary' do
         write_passing_tests 10
-        assert_match /Finished in \d\.\d+ seconds\.\s*10 tests, 10 assertions, 0 failures, 0 errors/m, run_autotest
+        assert_match /Finished.* in .*10 tests, 10 assertions, 0 failures, 0 errors/m, run_autotest
       end
 
       should 'call good hooks in correct order' do
