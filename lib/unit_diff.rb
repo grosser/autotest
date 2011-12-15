@@ -75,7 +75,13 @@ class UnitDiff
         output.puts line
         chars = []
         while c = input.getc do
-          output.putc c
+          begin
+            output.putc c
+          rescue Errno::EINVAL
+            # weird bug that only happens on some windows machines
+            # <-> using print does not show color on windows
+            output.print c
+          end
           chars << c
           tail = chars[-term_length..-1]
           break if chars.size >= term_length and tail == term
