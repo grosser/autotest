@@ -43,6 +43,7 @@ Usage
     -r, --rc CONFIG                  Path to config file. (Defaults to ~/.autotest or current_dir/.autotest)
     -s, --style STYLE                Which style to use, e.g. rspec, rspec2
     -b, --bundle-exec                Use bundle exec to run tests
+    -d, --delay SECONDS              Delay time from file change to test run
     -n, --notify                     Notify about success and failure via popups
     -h, --help                       Show this.
 
