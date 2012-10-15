@@ -141,6 +141,11 @@ class Autotest
         require 'autotest/notify'
       end
 
+      # set to 0 with autotest-fsevent to make autotest react like guard
+      opts.on("-d", "--delay DELAY", Integer, "Delay time from file change to test run") do |delay|
+        options[:delay] = delay
+      end
+
       opts.on "-h", "--help", "Show this." do
         puts opts
         exit 1
@@ -281,7 +286,7 @@ class Autotest
     self.order             = :random
     self.output            = $stderr
     self.prefix            = nil
-    self.sleep             = 1
+    self.sleep             = options[:delay] || 1
     self.testlib           = "test/unit"
     self.find_directories  = ['.']
     self.unit_diff         = "ruby #{File.expand_path("#{File.dirname(__FILE__)}/../bin/unit_diff")} -u" # add ruby to also work for windows

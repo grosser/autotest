@@ -453,6 +453,16 @@ test_error2(#{@test_class}):
     assert_equal expect, actual
   end
 
+  def test_sleep_option
+    result = Autotest.parse_options(['--delay','0'])
+    assert_equal({:delay => 0}, result)
+  end
+
+  def test_no_options
+    result = Autotest.parse_options([])
+    assert_equal({}, result)
+  end
+
   def test_test_files_for
     assert_equal [@test], @a.test_files_for(@impl)
     assert_equal [@test], @a.test_files_for(@test)

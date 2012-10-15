@@ -10,7 +10,7 @@ class TestAutotestIntegration < Test::Unit::TestCase
   def autotest_executable
     '../../bin/autotest'
   end
-  
+
   def run_autotest(flag_string='')
     `cd #{temp_dir} && #{autotest_executable} #{flag_string}`
   end
@@ -19,7 +19,7 @@ class TestAutotestIntegration < Test::Unit::TestCase
     file = "#{temp_dir}/#{file}"
     dir = File.dirname(file)
     `mkdir -p #{dir}` unless File.directory?(dir)
-    File.open(file, 'w'){|f| f.write text } 
+    File.open(file, 'w'){|f| f.write text }
   end
 
   def write_passing_tests times
@@ -89,6 +89,13 @@ class TestAutotestIntegration < Test::Unit::TestCase
         result = run_autotest('--parallel')
         assert_match %r{YES}, result
         assert_match %r{YEP}, result
+      end
+
+      should 'use a sleep option from .autotest' do
+        # speed up autotest to react instantly on save like Guard
+        run_autotest("--delay 0")
+        a = Autotest.new
+        assert_equal a.sleep, 0
       end
     end
   end
