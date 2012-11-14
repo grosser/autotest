@@ -7,6 +7,9 @@ GEM
       bundler (~> 1.0)
       git (>= 1.2.5)
       rake
+    metaclass (0.0.1)
+    mocha (0.13.0)
+      metaclass (~> 0.0.1)
     parallel (0.5.11)
     parallel_tests (0.6.11)
       parallel
@@ -26,6 +29,7 @@ PLATFORMS
 
 DEPENDENCIES
   jeweler
+  mocha
   parallel_tests
   rake
   rspec (~> 2)

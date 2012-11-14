@@ -125,7 +125,7 @@ class Autotest
 
       opts.on("-s", "--style STYLE", String,
               "Manually specify test style. (default: autodiscover)") do |style|
-        options[:style] = Array(style)
+        options[:style] = style.split(/\s/)
       end
 
       opts.on("-p", "--parallel","Run tests (Test::Unit only) in parallel -- gem install parallel_tests") do
