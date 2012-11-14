@@ -1,9 +1,10 @@
 require File.expand_path('test/helper')
 require 'autotest'
-
+require 'mocha/setup'
 
 # NOT TESTED:
 #   class_run
+#   discover
 #   add_sigint_handler
 #   all_good
 #   get_to_green
@@ -453,9 +454,32 @@ test_error2(#{@test_class}):
     assert_equal expect, actual
   end
 
+  def test_runner_with_single_word_style
+    Autotest.stubs :options => {:style => ['rspec2']}
+    Autotest.stubs :puts
+    Autotest.expects(:require).with('autotest/rspec2')
+    Autotest.expects(:const_get).with('Rspec2')
+
+    Autotest.runner
+  end
+
+  def test_runner_with_multi_word_style
+    Autotest.stubs :options => {:style => ['rails', 'rspec2']}
+    Autotest.stubs :puts
+    Autotest.expects(:require).with('autotest/rails_rspec2')
+    Autotest.expects(:const_get).with('RailsRspec2')
+
+    Autotest.runner
+  end
+
   def test_sleep_option
     result = Autotest.parse_options(['--delay','0'])
     assert_equal({:delay => 0}, result)
+  end
+
+  def test_style_options
+    assert_equal Autotest.parse_options(['--style', 'rspec2']),       {:style => ['rspec2']}
+    assert_equal Autotest.parse_options(['--style', 'rspec2 rails']), {:style => ['rspec2', 'rails']}
   end
 
   def test_no_options
