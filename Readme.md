@@ -65,6 +65,7 @@ License
 =======
 
 ### Autotest was extracted from ZenTest and improved by:
+ - [Sam Pierson](https://github.com/sampierson)
  - [brian p o'rourke](https://github.com/bpo)
  - [Charles Roper](http://twitter.com/charlesroper)
  - [Shane Liebling](http://github.com/shanel)
