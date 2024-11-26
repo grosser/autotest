@@ -381,7 +381,7 @@ class Autotest
       open("| #{cmd}", "r") do |f|
         until f.eof? do
           c = f.getc or break
-          putc (c.is_a?(Fixnum) ? c.chr : c) # print breaks coloring on windows -> putc
+          putc (c.is_a?(Integer) ? c.chr : c) # print breaks coloring on windows -> putc
           line << c
           if c == ?\n then
             self.results << if RUBY19 then
@@ -584,7 +584,7 @@ class Autotest
   end
 
   def ruby_cmd
-    "#{prefix}#{ruby} -I#{libs} -rubygems"
+    "#{prefix}#{ruby} -I#{libs} -rrubygems"
   end
 
   def escape_filenames(classes)
