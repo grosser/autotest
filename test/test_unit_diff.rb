@@ -86,7 +86,7 @@ Expected nil to equal "baz":
                    main.load at kernel/core/compile.rb:150
           main.__script__ {} at last_mspec.rb:11
                Array#each {} at kernel/core/array.rb:545
-       Integer(Fixnum)#times at kernel/core/integer.rb:15
+       Integer#times at kernel/core/integer.rb:15
                   Array#each at kernel/core/array.rb:545
              main.__script__ at last_mspec.rb:16
     CompiledMethod#as_script at kernel/bootstrap/primitives.rb:41
